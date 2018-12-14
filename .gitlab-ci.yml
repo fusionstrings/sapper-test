@@ -13,7 +13,6 @@ build:
     - cp -R static dist/static
     - cp -R __sapper__ dist/__sapper__
     - cp package*.json dist
-    - cp app.yaml dist
   artifacts:
     name: ${CI_BUILD_NAME}
     paths:
