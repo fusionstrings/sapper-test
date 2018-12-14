@@ -1,0 +1,24 @@
+image: node:11
+
+stages:
+  - build
+  - test
+  - deploy
+
+# BUILD
+build:
+  stage: build
+  script:
+    - npm ci
+    - npm run build
+    - mkdir dist
+    - cp -R static dist/static
+    - cp -R __sapper__ dist/__sapper__
+    - cp package*.json dist
+    - cp app.yaml dist
+  artifacts:
+    name: ${CI_BUILD_NAME}
+    paths:
+      - dist/
+      - __sapper__/
+
